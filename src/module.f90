@@ -15,7 +15,9 @@ module pkg_activation_function
 
     ! kind: interface (function)
     public :: der_std_sigmoid
+    public :: der_tanh
     public :: std_sigmoid
+    public :: std_step
 
 
    ! <interface>s for this <module>
@@ -72,6 +74,32 @@ module pkg_activation_function
     end interface der_std_sigmoid
 
 
+    interface der_tanh
+
+        module pure elemental function der_tanh_real32 ( x ) result( der_tanh )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: der_tanh
+
+        end function der_tanh_real32
+
+
+        module pure elemental function der_tanh_real64 ( x ) result( der_tanh )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: der_tanh
+
+        end function der_tanh_real64
+
+    end interface der_tanh
+
+
     interface inverse
 
         module pure elemental function inverse_real32 ( x ) result( inverse )
@@ -122,6 +150,32 @@ module pkg_activation_function
         end function std_sigmoid_real64
 
     end interface std_sigmoid
+
+
+    interface std_step
+
+        module pure elemental function std_step_real32 ( x ) result( std_step )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL32) :: std_step
+
+        end function std_step_real32
+
+
+        module pure elemental function std_step_real64 ( x ) result( std_step )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL64) :: std_step
+
+        end function std_step_real64
+
+    end interface std_step
 
 
     interface subtract_from_one
