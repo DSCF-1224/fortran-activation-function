@@ -15,10 +15,12 @@ module pkg_activation_function
 
     ! kind: interface (function)
     public :: der_std_sigmoid
-    public :: der_tanh
+    public :: der_gelu
     public :: der_lrelu
     public :: der_prelu
     public :: der_relu
+    public :: der_tanh
+    public :: gelu
     public :: lrelu
     public :: prelu
     public :: relu
@@ -54,56 +56,56 @@ module pkg_activation_function
     end interface add_to_one
 
 
-    interface der_std_sigmoid
+    interface cdf_std_normal
 
-        module pure elemental function der_std_sigmoid_real32 ( x ) result( der_std_sigmoid )
+        module pure elemental function cdf_std_normal_real32 ( x ) result( cdf_std_normal )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: cdf_std_normal
+
+        end function cdf_std_normal_real32
+
+
+        module pure elemental function cdf_std_normal_real64 ( x ) result( cdf_std_normal )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: cdf_std_normal
+
+        end function cdf_std_normal_real64
+
+    end interface cdf_std_normal
+
+
+    interface der_gelu
+
+        module pure elemental function der_gelu_real32 ( x ) result( der_gelu )
 
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
            ! return value of this <function>
-           real(REAL32) :: der_std_sigmoid
+           real(REAL32) :: der_gelu
 
-        end function der_std_sigmoid_real32
+        end function der_gelu_real32
 
 
-        module pure elemental function der_std_sigmoid_real64 ( x ) result( der_std_sigmoid )
+        module pure elemental function der_gelu_real64 ( x ) result( der_gelu )
 
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
            ! return value of this <function>
-           real(REAL64) :: der_std_sigmoid
+           real(REAL64) :: der_gelu
 
-        end function der_std_sigmoid_real64
+        end function der_gelu_real64
 
-    end interface der_std_sigmoid
-
-
-    interface der_prelu
-
-        module pure elemental function der_prelu_real32 ( x , weight ) result( der_prelu )
-
-            ! argument(s) for this <function>
-            real(REAL32) , intent(in) :: x , weight
-
-           ! return value of this <function>
-           real(REAL32) :: der_prelu
-
-        end function der_prelu_real32
-
-
-        module pure elemental function der_prelu_real64 ( x , weight ) result( der_prelu )
-
-            ! argument(s) for this <function>
-            real(REAL64) , intent(in) :: x , weight
-
-           ! return value of this <function>
-           real(REAL64) :: der_prelu
-
-        end function der_prelu_real64
-
-    end interface der_prelu
+    end interface der_gelu
 
 
     interface der_lrelu
@@ -132,6 +134,32 @@ module pkg_activation_function
     end interface der_lrelu
 
 
+    interface der_prelu
+
+        module pure elemental function der_prelu_real32 ( x , weight ) result( der_prelu )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x , weight
+
+           ! return value of this <function>
+           real(REAL32) :: der_prelu
+
+        end function der_prelu_real32
+
+
+        module pure elemental function der_prelu_real64 ( x , weight ) result( der_prelu )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x , weight
+
+           ! return value of this <function>
+           real(REAL64) :: der_prelu
+
+        end function der_prelu_real64
+
+    end interface der_prelu
+
+
     interface der_relu
 
         module pure elemental function der_relu_real32 ( x ) result( der_relu )
@@ -156,6 +184,32 @@ module pkg_activation_function
         end function der_relu_real64
 
     end interface der_relu
+
+
+    interface der_std_sigmoid
+
+        module pure elemental function der_std_sigmoid_real32 ( x ) result( der_std_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: der_std_sigmoid
+
+        end function der_std_sigmoid_real32
+
+
+        module pure elemental function der_std_sigmoid_real64 ( x ) result( der_std_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: der_std_sigmoid
+
+        end function der_std_sigmoid_real64
+
+    end interface der_std_sigmoid
 
 
     interface der_tanh
@@ -184,6 +238,58 @@ module pkg_activation_function
     end interface der_tanh
 
 
+    interface divide_by_sqrt2
+
+        module pure elemental function divide_by_sqrt2_real32 ( x ) result( divide_by_sqrt2 )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: divide_by_sqrt2
+
+        end function divide_by_sqrt2_real32
+
+
+        module pure elemental function divide_by_sqrt2_real64 ( x ) result( divide_by_sqrt2 )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: divide_by_sqrt2
+
+        end function divide_by_sqrt2_real64
+
+    end interface divide_by_sqrt2
+
+
+    interface half
+
+        module pure elemental function half_real32 ( x ) result( half )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL32) :: half
+
+        end function half_real32
+
+
+        module pure elemental function half_real64 ( x ) result( half )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+ 
+           ! return value of this <function>
+           real(REAL64) :: half
+ 
+         end function half_real64
+
+    end interface half
+
+
     interface inverse
 
         module pure elemental function inverse_real32 ( x ) result( inverse )
@@ -208,6 +314,58 @@ module pkg_activation_function
         end function inverse_real64
 
     end interface inverse
+
+
+    interface gelu
+
+        module pure elemental function gelu_real32 ( x ) result( gelu )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: gelu
+
+        end function gelu_real32
+
+
+        module pure elemental function gelu_real64 ( x ) result( gelu )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: gelu
+
+        end function gelu_real64
+
+    end interface gelu
+
+
+    interface lrelu
+
+        module pure elemental function lrelu_real32 ( x ) result( lrelu )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: lrelu
+
+        end function lrelu_real32
+
+
+        module pure elemental function lrelu_real64 ( x ) result( lrelu )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: lrelu
+
+        end function lrelu_real64
+
+    end interface lrelu
 
 
     interface prelu
@@ -236,30 +394,30 @@ module pkg_activation_function
     end interface prelu
 
 
-    interface lrelu
+    interface pdf_std_normal
 
-        module pure elemental function lrelu_real32 ( x ) result( lrelu )
+        module pure elemental function pdf_std_normal_real32 ( x ) result( pdf_std_normal )
 
-            ! argument(s) for this <function>
-            real(REAL32) , intent(in) :: x
-
-           ! return value of this <function>
-           real(REAL32) :: lrelu
-
-        end function lrelu_real32
-
-
-        module pure elemental function lrelu_real64 ( x ) result( lrelu )
-
-            ! argument(s) for this <function>
-            real(REAL64) , intent(in) :: x
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
 
            ! return value of this <function>
-           real(REAL64) :: lrelu
+           real(REAL32) :: pdf_std_normal
 
-        end function lrelu_real64
+        end function pdf_std_normal_real32
 
-    end interface lrelu
+
+        module pure elemental function pdf_std_normal_real64 ( x ) result( pdf_std_normal )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: pdf_std_normal
+
+        end function pdf_std_normal_real64
+
+    end interface pdf_std_normal
 
 
     interface relu
