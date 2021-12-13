@@ -20,12 +20,14 @@ module pkg_activation_function
     public :: der_prelu
     public :: der_relu
     public :: der_silu
+    public :: der_softplus
     public :: der_tanh
     public :: gelu
     public :: lrelu
     public :: prelu
     public :: relu
     public :: silu
+    public :: softplus
     public :: std_sigmoid
     public :: std_step
 
@@ -212,6 +214,32 @@ module pkg_activation_function
         end function der_silu_real64
 
     end interface der_silu
+
+
+    interface der_softplus
+
+        module pure elemental function der_softplus_real32 ( x ) result( der_softplus )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: der_softplus
+
+        end function der_softplus_real32
+
+
+        module pure elemental function der_softplus_real64 ( x ) result( der_softplus )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: der_softplus
+
+        end function der_softplus_real64
+
+    end interface der_softplus
 
 
     interface der_std_sigmoid
@@ -498,6 +526,32 @@ module pkg_activation_function
         end function silu_real64
 
     end interface silu
+
+
+    interface softplus
+
+        module pure elemental function softplus_real32 ( x ) result( softplus )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL32) :: softplus
+
+        end function softplus_real32
+
+
+        module pure elemental function softplus_real64 ( x ) result( softplus )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL64) :: softplus
+
+        end function softplus_real64
+
+    end interface softplus
 
 
     interface std_sigmoid
