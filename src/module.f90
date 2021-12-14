@@ -21,6 +21,7 @@ module pkg_activation_function
     public :: der_relu
     public :: der_silu
     public :: der_softplus
+    public :: der_softsign
     public :: der_tanh
     public :: gelu
     public :: lrelu
@@ -28,6 +29,7 @@ module pkg_activation_function
     public :: relu
     public :: silu
     public :: softplus
+    public :: softsign
     public :: std_sigmoid
     public :: std_step
 
@@ -240,6 +242,32 @@ module pkg_activation_function
         end function der_softplus_real64
 
     end interface der_softplus
+
+
+    interface der_softsign
+
+        module pure elemental function der_softsign_real32 ( x ) result( der_softsign )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL32) :: der_softsign
+
+        end function der_softsign_real32
+
+
+        module pure elemental function der_softsign_real64 ( x ) result( der_softsign )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+           ! return value of this <function>
+           real(REAL64) :: der_softsign
+
+        end function der_softsign_real64
+
+    end interface der_softsign
 
 
     interface der_std_sigmoid
@@ -552,6 +580,58 @@ module pkg_activation_function
         end function softplus_real64
 
     end interface softplus
+
+
+    interface softsign
+
+        module pure elemental function softsign_real32 ( x ) result( softsign )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL32) :: softsign
+
+        end function softsign_real32
+
+
+        module pure elemental function softsign_real64 ( x ) result( softsign )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL64) :: softsign
+
+        end function softsign_real64
+
+    end interface softsign
+
+
+    interface softsign_denominator
+
+        module pure elemental function softsign_denominator_real32 ( x ) result( softsign_denominator )
+
+           ! argument(s) for this <function>
+           real(REAL32) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL32) :: softsign_denominator
+
+        end function softsign_denominator_real32
+
+
+        module pure elemental function softsign_denominator_real64 ( x ) result( softsign_denominator )
+
+           ! argument(s) for this <function>
+           real(REAL64) , intent(in) :: x
+
+          ! return value of this <function>
+          real(REAL64) :: softsign_denominator
+
+        end function softsign_denominator_real64
+
+    end interface softsign_denominator
 
 
     interface std_sigmoid

@@ -14,6 +14,7 @@ implementation of the activation functions in Fortran 2008
 |`der_relu`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of rectified linear unit function|
 |`der_silu`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of sigmoid linear unit function|
 |`der_softplus`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of softplus|
+|`der_softsign`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of softsign|
 |`der_std_sigmoid`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of standard sigmoid function|
 |`der_tanh`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|derivative of hyperbolic tangent|
 |`gelu`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|gaussian error linear unit function|
@@ -22,6 +23,7 @@ implementation of the activation functions in Fortran 2008
 |`relu`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|rectified linear unit function|
 |`silu`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|sigmoid linear unit function|
 |`softplus`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|softplus function|
+|`softsign`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|softsign function|
 |`std_sigmoid`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|standard sigmoid function|
 |`std_step`|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|standard step function|
 
