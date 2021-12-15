@@ -24,6 +24,7 @@ module pkg_activation_function
     public :: der_softsign
     public :: der_tanh
     public :: gelu
+    public :: log_sigmoid
     public :: lrelu
     public :: prelu
     public :: relu
@@ -34,28 +35,28 @@ module pkg_activation_function
     public :: std_step
 
 
-   ! <interface>s for this <module>
+    ! <interface>s for this <module>
 
     interface add_to_one
 
         module pure elemental function add_to_one_real32 ( x ) result( add_to_one )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: add_to_one
+            ! return value of this <function>
+            real(REAL32) :: add_to_one
 
         end function add_to_one_real32
 
 
         module pure elemental function add_to_one_real64 ( x ) result( add_to_one )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: add_to_one
+            ! return value of this <function>
+            real(REAL64) :: add_to_one
 
         end function add_to_one_real64
 
@@ -66,26 +67,52 @@ module pkg_activation_function
 
         module pure elemental function cdf_std_normal_real32 ( x ) result( cdf_std_normal )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: cdf_std_normal
+            ! return value of this <function>
+            real(REAL32) :: cdf_std_normal
 
         end function cdf_std_normal_real32
 
 
         module pure elemental function cdf_std_normal_real64 ( x ) result( cdf_std_normal )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: cdf_std_normal
+            ! return value of this <function>
+            real(REAL64) :: cdf_std_normal
 
         end function cdf_std_normal_real64
 
     end interface cdf_std_normal
+
+
+    interface der_log_sigmoid
+
+        module pure elemental function der_log_sigmoid_real32 ( x ) result( der_log_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+            ! return value of this <function>
+            real(REAL32) :: der_log_sigmoid
+
+        end function der_log_sigmoid_real32
+
+
+        module pure elemental function der_log_sigmoid_real64 ( x ) result( der_log_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+            ! return value of this <function>
+            real(REAL64) :: der_log_sigmoid
+
+        end function der_log_sigmoid_real64
+
+    end interface der_log_sigmoid
 
 
     interface der_gelu
@@ -95,8 +122,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_gelu
+            ! return value of this <function>
+            real(REAL32) :: der_gelu
 
         end function der_gelu_real32
 
@@ -106,8 +133,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_gelu
+            ! return value of this <function>
+            real(REAL64) :: der_gelu
 
         end function der_gelu_real64
 
@@ -121,8 +148,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_lrelu
+            ! return value of this <function>
+            real(REAL32) :: der_lrelu
 
         end function der_lrelu_real32
 
@@ -132,8 +159,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_lrelu
+            ! return value of this <function>
+            real(REAL64) :: der_lrelu
 
         end function der_lrelu_real64
 
@@ -147,8 +174,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x , weight
 
-           ! return value of this <function>
-           real(REAL32) :: der_prelu
+            ! return value of this <function>
+            real(REAL32) :: der_prelu
 
         end function der_prelu_real32
 
@@ -158,8 +185,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x , weight
 
-           ! return value of this <function>
-           real(REAL64) :: der_prelu
+            ! return value of this <function>
+            real(REAL64) :: der_prelu
 
         end function der_prelu_real64
 
@@ -173,8 +200,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_relu
+            ! return value of this <function>
+            real(REAL32) :: der_relu
 
         end function der_relu_real32
 
@@ -184,8 +211,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_relu
+            ! return value of this <function>
+            real(REAL64) :: der_relu
 
         end function der_relu_real64
 
@@ -199,8 +226,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_silu
+            ! return value of this <function>
+            real(REAL32) :: der_silu
 
         end function der_silu_real32
 
@@ -210,8 +237,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_silu
+            ! return value of this <function>
+            real(REAL64) :: der_silu
 
         end function der_silu_real64
 
@@ -225,8 +252,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_softplus
+            ! return value of this <function>
+            real(REAL32) :: der_softplus
 
         end function der_softplus_real32
 
@@ -236,8 +263,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_softplus
+            ! return value of this <function>
+            real(REAL64) :: der_softplus
 
         end function der_softplus_real64
 
@@ -251,8 +278,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_softsign
+            ! return value of this <function>
+            real(REAL32) :: der_softsign
 
         end function der_softsign_real32
 
@@ -262,8 +289,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_softsign
+            ! return value of this <function>
+            real(REAL64) :: der_softsign
 
         end function der_softsign_real64
 
@@ -277,8 +304,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_std_sigmoid
+            ! return value of this <function>
+            real(REAL32) :: der_std_sigmoid
 
         end function der_std_sigmoid_real32
 
@@ -288,8 +315,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_std_sigmoid
+            ! return value of this <function>
+            real(REAL64) :: der_std_sigmoid
 
         end function der_std_sigmoid_real64
 
@@ -303,8 +330,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: der_tanh
+            ! return value of this <function>
+            real(REAL32) :: der_tanh
 
         end function der_tanh_real32
 
@@ -314,8 +341,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: der_tanh
+            ! return value of this <function>
+            real(REAL64) :: der_tanh
 
         end function der_tanh_real64
 
@@ -329,8 +356,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: divide_by_sqrt2
+            ! return value of this <function>
+            real(REAL32) :: divide_by_sqrt2
 
         end function divide_by_sqrt2_real32
 
@@ -340,8 +367,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: divide_by_sqrt2
+            ! return value of this <function>
+            real(REAL64) :: divide_by_sqrt2
 
         end function divide_by_sqrt2_real64
 
@@ -352,8 +379,8 @@ module pkg_activation_function
 
         module pure elemental function half_real32 ( x ) result( half )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: half
@@ -366,8 +393,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
  
-           ! return value of this <function>
-           real(REAL64) :: half
+            ! return value of this <function>
+            real(REAL64) :: half
  
          end function half_real64
 
@@ -381,8 +408,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: inverse
+            ! return value of this <function>
+            real(REAL32) :: inverse
 
         end function inverse_real32
 
@@ -392,8 +419,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: inverse
+            ! return value of this <function>
+            real(REAL64) :: inverse
 
         end function inverse_real64
 
@@ -407,8 +434,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: gelu
+            ! return value of this <function>
+            real(REAL32) :: gelu
 
         end function gelu_real32
 
@@ -418,12 +445,38 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: gelu
+            ! return value of this <function>
+            real(REAL64) :: gelu
 
         end function gelu_real64
 
     end interface gelu
+
+
+    interface log_sigmoid
+
+        module pure elemental function log_sigmoid_real32 ( x ) result( log_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
+
+            ! return value of this <function>
+            real(REAL32) :: log_sigmoid
+
+        end function log_sigmoid_real32
+
+
+        module pure elemental function log_sigmoid_real64 ( x ) result( log_sigmoid )
+
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
+
+            ! return value of this <function>
+            real(REAL64) :: log_sigmoid
+
+        end function log_sigmoid_real64
+
+    end interface log_sigmoid
 
 
     interface lrelu
@@ -433,8 +486,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: lrelu
+            ! return value of this <function>
+            real(REAL32) :: lrelu
 
         end function lrelu_real32
 
@@ -444,8 +497,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: lrelu
+            ! return value of this <function>
+            real(REAL64) :: lrelu
 
         end function lrelu_real64
 
@@ -459,8 +512,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x , weight
 
-           ! return value of this <function>
-           real(REAL32) :: prelu
+            ! return value of this <function>
+            real(REAL32) :: prelu
 
         end function prelu_real32
 
@@ -470,8 +523,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x , weight
 
-           ! return value of this <function>
-           real(REAL64) :: prelu
+            ! return value of this <function>
+            real(REAL64) :: prelu
 
         end function prelu_real64
 
@@ -482,22 +535,22 @@ module pkg_activation_function
 
         module pure elemental function pdf_std_normal_real32 ( x ) result( pdf_std_normal )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: pdf_std_normal
+            ! return value of this <function>
+            real(REAL32) :: pdf_std_normal
 
         end function pdf_std_normal_real32
 
 
         module pure elemental function pdf_std_normal_real64 ( x ) result( pdf_std_normal )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: pdf_std_normal
+            ! return value of this <function>
+            real(REAL64) :: pdf_std_normal
 
         end function pdf_std_normal_real64
 
@@ -511,8 +564,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: relu
+            ! return value of this <function>
+            real(REAL32) :: relu
 
         end function relu_real32
 
@@ -522,8 +575,8 @@ module pkg_activation_function
             ! argument(s) for this <function>
             real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: relu
+            ! return value of this <function>
+            real(REAL64) :: relu
 
         end function relu_real64
 
@@ -534,8 +587,8 @@ module pkg_activation_function
 
         module pure elemental function silu_real32 ( x ) result( silu )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: silu
@@ -545,8 +598,8 @@ module pkg_activation_function
 
         module pure elemental function silu_real64 ( x ) result( silu )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: silu
@@ -560,8 +613,8 @@ module pkg_activation_function
 
         module pure elemental function softplus_real32 ( x ) result( softplus )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: softplus
@@ -571,8 +624,8 @@ module pkg_activation_function
 
         module pure elemental function softplus_real64 ( x ) result( softplus )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: softplus
@@ -586,8 +639,8 @@ module pkg_activation_function
 
         module pure elemental function softsign_real32 ( x ) result( softsign )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: softsign
@@ -597,8 +650,8 @@ module pkg_activation_function
 
         module pure elemental function softsign_real64 ( x ) result( softsign )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: softsign
@@ -612,8 +665,8 @@ module pkg_activation_function
 
         module pure elemental function softsign_denominator_real32 ( x ) result( softsign_denominator )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: softsign_denominator
@@ -623,8 +676,8 @@ module pkg_activation_function
 
         module pure elemental function softsign_denominator_real64 ( x ) result( softsign_denominator )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: softsign_denominator
@@ -638,8 +691,8 @@ module pkg_activation_function
 
         module pure elemental function std_sigmoid_real32 ( x ) result( std_sigmoid )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: std_sigmoid
@@ -649,8 +702,8 @@ module pkg_activation_function
 
         module pure elemental function std_sigmoid_real64 ( x ) result( std_sigmoid )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: std_sigmoid
@@ -664,8 +717,8 @@ module pkg_activation_function
 
         module pure elemental function std_step_real32 ( x ) result( std_step )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL32) :: std_step
@@ -675,8 +728,8 @@ module pkg_activation_function
 
         module pure elemental function std_step_real64 ( x ) result( std_step )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
           ! return value of this <function>
           real(REAL64) :: std_step
@@ -690,22 +743,22 @@ module pkg_activation_function
 
         module pure elemental function subtract_from_one_real32 ( x ) result( subtract_from_one )
 
-           ! argument(s) for this <function>
-           real(REAL32) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL32) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL32) :: subtract_from_one
+            ! return value of this <function>
+            real(REAL32) :: subtract_from_one
 
         end function subtract_from_one_real32
 
 
         module pure elemental function subtract_from_one_real64 ( x ) result( subtract_from_one )
 
-           ! argument(s) for this <function>
-           real(REAL64) , intent(in) :: x
+            ! argument(s) for this <function>
+            real(REAL64) , intent(in) :: x
 
-           ! return value of this <function>
-           real(REAL64) :: subtract_from_one
+            ! return value of this <function>
+            real(REAL64) :: subtract_from_one
 
         end function subtract_from_one_real64
 
